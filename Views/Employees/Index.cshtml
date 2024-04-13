@@ -1,0 +1,103 @@
+﻿@model IEnumerable<EmployeeGYM>
+
+<h1 class="alert alert-success text-align:center"> Employees </h1>
+@* 
+<ul>
+    @foreach (var item in ViewBag.Branches)
+    {
+        <li>
+            @item
+        </li>
+    }
+</ul>
+<ul style="list-style-type:square">
+    @foreach (var item in ViewBag.Countries)
+    {
+        <li>@item</li>
+    }
+
+</ul>
+@{
+    string discount = (ViewBag.Descount * 100) + "%";
+}
+
+<h1>Discount: @discount</h1>
+ *@
+
+
+
+
+<a asp-controller="Employees" asp-action="GetCreateView" class="btn btn-success mb-3">Create New </a>
+
+
+<form method="get" asp-controller="Employees" asp-action="GetIndexView">
+    <div class="input-group">
+        <input type="text" name="search" />
+        <button type="submit" class="btn btn-secondary input-group-append">Search</button>
+    </div>
+
+</form>
+
+@if (Model.Count() > 0)
+{
+    <table class="table caption-top table-bordered text-center table-hover table-striped ">
+        <caption> Employees</caption>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(e => e.Id)</th>
+                <th>@Html.DisplayNameFor(e => e.FullName)</th>
+                <th>@Html.DisplayNameFor(e => e.Position)</th>
+                <th>@Html.DisplayNameFor(e => e.Salary)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (EmployeeGYM emp in Model)
+            {
+                <tr>
+                    <td>@emp.Id</td>
+                    <td>@emp.FullName</td>
+                    <td>@emp.Position</td>
+                    <td>@emp.Salary</td>
+                    <td>
+                        <a asp-controller="Employees" asp-action="GetDetailsView" asp-route-id="@emp.Id"><i class="bi bi-card-list"></i>Details</a> |
+                        <a asp-controller="Employees" asp-action="GetEditView" asp-route-id="@emp.Id"><i class="bi bi-pencil-square"></i>Edit</a> |
+                        <a asp-controller="Employees" asp-action="GetDeleteView" asp-route-id="@emp.Id"><i class="bi bi-trash3"></i>Delete</a>
+
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+        <th colspan="3" style="text-align:right">Total</th>
+        <th> @Model.Sum(em => em.Salary)</th>
+        <tr></tr>
+        </tfoot>
+
+    </table>
+}
+else
+{
+    <h1 class="alert alert-danger text-center"> There is no employee. </h1>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}
+
+
+
+
+@foreach (EmployeeGYM emp in Model)
+{
+    <div class="card bg-dark text-white  text-center mb-3 " style="display:inline-block;width:18rem;">
+        <div class="card-header">@emp.FullName </div>
+        <div class="card-body">
+
+            <h5>@emp.Position</h5>
+            <p>@emp.JoinDateTime</p>
+
+        </div>
+        <div class="card-footer">@emp.Salary </div>
+    </div>
+}
+ 

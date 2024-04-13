@@ -1,0 +1,48 @@
+﻿@model GymSystem.Models.Department
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Department</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+
+
+    
+@if(Model.Employees.Count() >0)
+  {
+    <ul class="list-group col-4">
+
+    <li class="list-group-item active">
+        Employees
+    </li>
+    @foreach(var item in Model.Employees)
+    {
+        <li class="list-group-item">@item.FullName (item.Position)</li>    
+    }
+    </ul>
+
+  }
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

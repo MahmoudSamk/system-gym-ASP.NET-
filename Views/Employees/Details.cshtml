@@ -1,0 +1,46 @@
+﻿@model EmployeeGYM
+
+<h1 class="alert alert-info text-center">Employee Details </h1>
+
+
+
+
+
+<dl class="row">
+    <dt class="col-2"> @Html.DisplayNameFor(e => e.Id)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.Id)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e => e.FullName) dt
+    <dd class="col-10">@Html.DisplayFor(e => e.FullName)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e => e.Position)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.Position)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e => e.Salary)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.Salary)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e => e.Appraisal)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.Appraisal)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e => e.BirthDate)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.BirthDate)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(e => e.JoinDateTime)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.JoinDateTime)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(e => e.AttendanceTime)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.AttendanceTime)</dd>
+
+
+    <dt class="col-2">@Html.DisplayNameFor(e => e.NationalNumber)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.NationalNumber)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(e => e.PhoneNumber)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.PhoneNumber)</dd>
+
+    <dt class="col-2">@Html.DisplayNameFor(e => e.SecretCode)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.SecretCode)</dd>
+
+
+    <dt class="col-2">@Html.DisplayNameFor(e => e.Department)</dt>
+    <dd class="col-10">@Html.DisplayFor(e => e.Department.Name) (@Html.DisplayFor(e => e.Department.Description))</dd>
+
+
+</dl>
+
+
+<a asp-controller="Employees" asp-action="GetIndexView" class="btn btn-primary">Back to List</a>
